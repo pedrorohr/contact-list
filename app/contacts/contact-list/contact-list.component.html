@@ -1,0 +1,18 @@
+<div id="container">
+  <header>
+    <div class="user">
+      <img src="https://scontent.fbfh5-1.fna.fbcdn.net/v/t1.0-9/12923139_943743495721885_6596692798860904117_n.jpg?oh=65e10df14a66c7ab4209e633a0254b72&oe=5885560A">
+    </div>
+    <div class="heading-user">
+      <strong>Pedro Rohr</strong>
+      <br/>
+      <small>@pedro.rohr</small>
+    </div>
+  </header>
+  <input #newContact class="add-contact" placeholder="Add Contact" (keyup.enter)="addContact(newContact.value); newContact.value=''">
+  <ul class="contact-list">
+    <li *ngFor="let contact of contacts">
+      <cl-contact [contact]="contact" ></cl-contact>
+    </li>
+  </ul>
+</div>
