@@ -1,11 +1,4 @@
-header {
-  background-color: #3F51B5;
-  color: #fff;
-  padding: 20px;
-  box-shadow: 0 2px 2px -2px #444;
-}
-
-#container {
+.contact-list-container {
   width: 420px;
   display: block;
   position: relative;
@@ -16,8 +9,15 @@ header {
   border-radius: 10px;
 }
 
+.contact-list-container header {
+  background-color: #3F51B5;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 2px -2px #444;
+}
+
 @media(max-width: 450px) {
-  #container {
+  .contact-list-container {
     width:350px;
   }
 }
@@ -35,18 +35,36 @@ header {
   border: #fff 2px solid;
 }
 
-.add-contact {
-  border: 1px solid #f1f1f1;
+.contact-filter {
+  border: 0px;
   height: 55px;
   padding: 5px;
   padding-left: 25px;
   display: block;
-  width: 100%;
+  width: 90%;
   font-size: 1em;
   color: #444;
 }
 
-.add-contact:focus {
+.contact-filter:focus {
+  outline: none;
+}
+
+.contact-add {
+  color: #3F51B5;
+  background-color: #fff;
+  border-bottom-right-radius: 5px;
+  border-color: #fff;
+  border: 0px;
+  font-size: 0.8em;
+  width: 10%;
+}
+
+.contact-add:hover {
+  cursor: pointer;
+}
+
+.contact-add:focus {
   outline: none;
 }
 
@@ -57,4 +75,8 @@ header {
 
 .contact-list li {
   display: block;
+}
+
+.contact-util {
+  display: flex;
 }
