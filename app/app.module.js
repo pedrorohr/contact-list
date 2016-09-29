@@ -10,16 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var contact_component_1 = require('./contacts/contact/contact.component');
 var contact_list_component_1 = require('./contacts/contact-list/contact-list.component');
+var contact_form_component_1 = require('./contacts/contact-form/contact-form.component');
+var contact_service_1 = require('./contacts/shared/contact.service');
+var contact_filter_service_1 = require('./contacts/shared/contact-filter.service');
+var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, contact_component_1.ContactComponent, contact_list_component_1.ContactListComponent],
+            imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, app_routing_1.routing],
+            declarations: [app_component_1.AppComponent, contact_component_1.ContactComponent, contact_list_component_1.ContactListComponent, contact_form_component_1.ContactFormComponent],
+            providers: [app_routing_1.appRoutingProviders, contact_service_1.ContactService, contact_filter_service_1.ContactFilterService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

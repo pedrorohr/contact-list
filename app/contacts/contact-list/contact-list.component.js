@@ -10,25 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var contact_service_1 = require('../shared/contact.service');
+var contact_filter_service_1 = require('../shared/contact-filter.service');
 var ContactListComponent = (function () {
-    function ContactListComponent(contactService) {
+    function ContactListComponent(contactService, contactFilterService) {
         this.contactService = contactService;
+        this.contactFilterService = contactFilterService;
         this.contacts = [];
+        this.filteredContacts = [];
     }
-    ContactListComponent.prototype.addContact = function (newContact) {
-        this.contactService.addContact(newContact);
+    ContactListComponent.prototype.filterChanged = function (filter) {
+        this.filteredContacts = this.contactFilterService.filter(filter, ['fullName', 'number'], this.contacts);
     };
     ContactListComponent.prototype.ngOnInit = function () {
         this.contacts = this.contactService.getContacts();
+        this.filteredContacts = this.contacts;
     };
     ContactListComponent = __decorate([
         core_1.Component({
             selector: 'cl-contact-list',
             templateUrl: 'app/contacts/contact-list/contact-list.component.html',
-            styleUrls: ['app/contacts/contact-list/contact-list.component.css'],
-            providers: [contact_service_1.ContactService]
+            styleUrls: ['app/contacts/contact-list/contact-list.component.css']
         }), 
-        __metadata('design:paramtypes', [contact_service_1.ContactService])
+        __metadata('design:paramtypes', [contact_service_1.ContactService, contact_filter_service_1.ContactFilterService])
     ], ContactListComponent);
     return ContactListComponent;
 }());

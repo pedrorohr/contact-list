@@ -9,12 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var contact_model_1 = require('../shared/contact.model');
 var contact_service_1 = require('../shared/contact.service');
 var ContactComponent = (function () {
-    function ContactComponent(contactService) {
+    function ContactComponent(contactService, router) {
         this.contactService = contactService;
+        this.router = router;
     }
+    ContactComponent.prototype.editContact = function (contact) {
+        this.router.navigate(['/contact', contact.id]);
+    };
     ContactComponent.prototype.removeContact = function (contact) {
         this.contactService.removeContact(contact);
     };
@@ -31,7 +36,7 @@ var ContactComponent = (function () {
             templateUrl: 'app/contacts/contact/contact.component.html',
             styleUrls: ['app/contacts/contact/contact.component.css']
         }), 
-        __metadata('design:paramtypes', [contact_service_1.ContactService])
+        __metadata('design:paramtypes', [contact_service_1.ContactService, router_1.Router])
     ], ContactComponent);
     return ContactComponent;
 }());
