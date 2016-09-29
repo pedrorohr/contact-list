@@ -39,7 +39,7 @@ export class ContactService {
       id: this.nextId++,
       firstName: contact.firstName,
       lastName: contact.lastName,
-      fullName: contact.firstName + contact.lastName,
+      fullName: (contact.lastName != null) ? contact.firstName + ' ' + contact.lastName : contact.firstName,
       number: contact.number,
       email: contact.email,
       star: false
