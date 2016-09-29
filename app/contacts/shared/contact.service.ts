@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { Contact } from './contact.model';
+import { ContactsDatabase } from './mock-contacts'
 
 @Injectable()
 export class ContactService {
 
-  private contacts: Contact[] = [];
+  private contacts: Contact[];
+  private nextId: number;
 
   //Observable sources
   private contactAddedSource = new Subject<string>();
@@ -19,19 +21,37 @@ export class ContactService {
   contactRemoved$ = this.contactRemovedSource.asObservable();
   contactStarred$ = this.contactStarredSource.asObservable();
 
-  constructor() {  }
+  constructor() {
+    this.init();
+  }
 
   getContacts() : Contact[] {
     return this.contacts;
   }
 
+  getContact(id: number) : Contact {
+    return this.contacts.find(contact => contact.id === +id);
+  }
+
   //Service message commands
-  addContact(newContact: string) {
+  addContact(contact: Contact) {
     this.contacts.push({
-      id: 4,
-      name: newContact,
+      id: this.nextId++,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      fullName: contact.firstName + contact.lastName,
+      number: contact.number,
+      email: contact.email,
       star: false
     });
+  }
+
+  updateContact(contact: Contact) {
+    const index = this.contacts.indexOf(contact);
+    this.contacts[index].firstName = contact.firstName;
+    this.contacts[index].lastName = contact.lastName;
+    this.contacts[index].number = contact.number;
+    this.contacts[index].email = contact.email;
   }
 
   removeContact(contact: Contact) {
@@ -43,4 +63,9 @@ export class ContactService {
     const index = this.contacts.indexOf(contact);
     this.contacts[index].star = !this.contacts[index].star;
   }
+
+  init() {
+    this.contacts = ContactsDatabase;
+    this.nextId = this.contacts.length;
+    }
 }
