@@ -1,0 +1,23 @@
+<div class="contact-list-container">
+  <header>
+    <div class="user">
+      <img src="assets/profile.jpg">
+    </div>
+    <div class="heading-user">
+      <strong>Pedro Rohr</strong>
+      <br/>
+      <small>@pedro.rohr</small>
+    </div>
+  </header>
+  <div class="contact-util">
+    <input type="text" class="contact-filter" placeholder="Search contact" #filter (keyup)="filterChanged(filter.value)">
+    <button type="button" class="contact-add" routerLink="/contact">
+      <i class="fa fa-plus fa-2x"></i>
+    </button>
+  </div>
+  <ul class="contact-list">
+    <li *ngFor="let contact of filteredContacts">
+      <con-contact [contact]="contact" ></con-contact>
+    </li>
+  </ul>
+</div>

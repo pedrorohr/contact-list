@@ -1,22 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ContactComponent } from './contact/contact.component';
+import { ContactFilterService } from './shared/contact-filter.service';
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactService } from './shared/contact.service';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactComponent,
+    ContactFormComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ContactFilterService,
+    ContactService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
