@@ -12,10 +12,11 @@ import { ContactService } from '../shared/contact.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  private contactForm: FormGroup;
   private contact: Contact;
   private editMode: boolean;
-  private title: string;
+
+  contactForm: FormGroup;
+  title: string;
 
   constructor(
     private contactService: ContactService,

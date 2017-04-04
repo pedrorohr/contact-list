@@ -12,8 +12,9 @@ import { ContactService } from '../shared/contact.service';
 export class ContactListComponent implements OnInit {
 
   private contacts: Contact[] = [];
-  private filteredContacts: Contact[] = [];
   private errorMessage: string;
+
+  filteredContacts: Contact[] = [];
 
   constructor(private contactService: ContactService, private contactFilterService: ContactFilterService) {}
 
